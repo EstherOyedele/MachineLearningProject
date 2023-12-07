@@ -1,0 +1,5 @@
+---
+title: "Overview"
+---
+
+Machine learning often deals with uncertainty and randomness, and understanding the fundamentals of probability theory and random variables is crucial for building robust models. In this blog post, we'll embark on a journey into the realm of basic machine learning concepts. In the each sections, we'll apply each concepts through practical examples and code implementations using the R programming language.

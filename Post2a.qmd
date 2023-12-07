@@ -1,0 +1,5 @@
+---
+title: "Introduction"
+---
+
+Clustering is a technique in machine learning that involves grouping similar data points together based on certain characteristics. The goal is to uncover inherent structures within the data, making it a form of unsupervised learning. In this section, we'll explore the basics of clustering, with a focus on one popular algorithm: K-Means.

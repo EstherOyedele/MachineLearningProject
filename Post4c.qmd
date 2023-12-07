@@ -1,0 +1,13 @@
+---
+title: "Real-World Application"
+---
+
+Decision trees find applications in various domains:
+
+-   **Medical Diagnosis:** Predicting diseases based on patient symptoms.
+
+-   **Customer Churn Prediction:** Identifying customers likely to churn from a service.
+
+-   **Credit Scoring:** Assessing credit risk of loan applicants.
+
+## 

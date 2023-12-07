@@ -1,0 +1,11 @@
+---
+title: "Real-World Application"
+---
+
+Anomaly detection is applied in various fields:
+
+-   **Fraud Detection:** Identifying unusual patterns in financial transactions.
+
+-   **Network Security:** Detecting unusual behavior in network traffic.
+
+-   **Manufacturing Quality Control:** Identifying defective products.

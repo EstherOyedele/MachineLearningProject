@@ -1,0 +1,69 @@
+---
+title: "Basic Probability Concepts"
+---
+
+**Events:** In probability theory, an event is an outcome or a set of outcomes of a random experiment. Events are the events we are interested in, and they can range from simple outcomes to complex combinations.
+
+**Sample Space:** The sample space is the set of all possible outcomes of a random experiment. It encompasses every possible scenario, providing a comprehensive view of the potential results.
+
+**Example 1:** Consider rolling a six-sided die.
+
+```{r}
+# Events and Sample Space Example
+
+# Define the sample space for rolling a six-sided die
+sample_space <- 1:6
+
+# Define the event "rolling an even number"
+event_A <- c(2, 4, 6)
+
+# Define the event "rolling a number greater than 4"
+event_B <- c(5, 6)
+
+# Display the events and sample space
+cat("Event A (Rolling an even number):", event_A, "\n")
+cat("Event B (Rolling a number greater than 4):", event_B, "\n")
+cat("Sample Space:", sample_space, "\n")
+```
+
+**Example 2:** Consider flipping a coin with Head and Tail
+
+```{r}
+# Sample Space Example 2
+
+# Define the sample space for flipping a coin
+coin_sample_space <- c("Heads", "Tails")
+
+# Display the sample space for flipping a coin
+cat("Sample Space for Flipping a Coin:", coin_sample_space, "\n")
+
+```
+
+## Probability of an Event
+
+The probability of an event is a measure of the likelihood that the event will occur. It is expressed as a value between 0 and 1, where 0 indicates impossibility, 1 indicates certainty, and values in between represent varying degrees of likelihood.
+
+#### Independence and Mutually Exclusive Events
+
+**Independence:** Events A and B are independent if the occurrence of one does not affect the occurrence of the other.
+
+**Mutually Exclusive (Disjoint):** Events A and B are mutually exclusive if they cannot both occur at the same time.
+
+```{r}
+# Probability of an Event Example
+
+# Number of favorable outcomes for event A
+favorable_outcomes_A <- length(event_A)
+
+# Total number of possible outcomes
+total_outcomes <- length(sample_space)
+
+# Calculate the probability of event A
+probability_A <- favorable_outcomes_A / total_outcomes
+
+# Display the probability of event A
+cat("Probability of Event A (Rolling an even number):", probability_A, "\n")
+
+```
+
+## 

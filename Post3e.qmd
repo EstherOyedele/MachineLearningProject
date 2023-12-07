@@ -1,0 +1,5 @@
+---
+title: "Conclusion"
+---
+
+Understanding linear regression allows us to make predictions and gain insights into the relationships between variables. Nonlinear regression expands our modeling capabilities, allowing us to capture more intricate relationships in the data. In the upcoming sections, we'll explore classification, and anomaly detection.

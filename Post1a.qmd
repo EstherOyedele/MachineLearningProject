@@ -1,0 +1,9 @@
+---
+title: "Introduction"
+---
+
+Machine learning often deals with uncertainty and randomness, and understanding the fundamentals of probability theory and random variables is crucial for building robust models.
+
+Probability theory provides a solid foundation for understanding uncertainty and variability in data---a cornerstone for anyone venturing into machine learning. Probability theory begins with the fundamental concepts of events and sample space. These concepts lay the groundwork for understanding the likelihood of different outcomes in a given scenario.
+
+In this section, we'll explore these basic probability concepts and how they form the building blocks of more advanced probability theory, and delve into the concept of random variables.

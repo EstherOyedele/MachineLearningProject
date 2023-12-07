@@ -1,0 +1,5 @@
+---
+title: "Conclusion"
+---
+
+Classification is a powerful tool for making predictions and categorizing data into distinct classes. In the last sections, we'll explore anomaly detection, a technique used to identify unusual patterns in data.

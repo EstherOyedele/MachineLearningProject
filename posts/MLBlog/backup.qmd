@@ -1,0 +1,401 @@
+---
+title: "Fundamentals of Machine Learning"
+---
+
+# Probability Theory and Random Variables
+
+## Introduction
+
+Probability theory begins with the fundamental concepts of events and sample space. These concepts lay the groundwork for understanding the likelihood of different outcomes in a given scenario. In this section, we'll explore these basic probability concepts and how they form the building blocks of more advanced probability theory.
+
+## Basic Probability Concepts
+
+**Events:** In probability theory, an event is an outcome or a set of outcomes of a random experiment. Events are the events we are interested in, and they can range from simple outcomes to complex combinations.
+
+**Sample Space:** The sample space is the set of all possible outcomes of a random experiment. It encompasses every possible scenario, providing a comprehensive view of the potential results.
+
+**Example 1:** Consider rolling a six-sided die.
+
+```{r}
+# Events and Sample Space Example
+
+# Define the sample space for rolling a six-sided die
+sample_space <- 1:6
+
+# Define the event "rolling an even number"
+event_A <- c(2, 4, 6)
+
+# Define the event "rolling a number greater than 4"
+event_B <- c(5, 6)
+
+# Display the events and sample space
+cat("Event A (Rolling an even number):", event_A, "\n")
+cat("Event B (Rolling a number greater than 4):", event_B, "\n")
+cat("Sample Space:", sample_space, "\n")
+```
+
+**Example 2:** Consider flipping a coin with Head and Tail
+
+```{r}
+# Sample Space Example 2
+
+# Define the sample space for flipping a coin
+coin_sample_space <- c("Heads", "Tails")
+
+# Display the sample space for flipping a coin
+cat("Sample Space for Flipping a Coin:", coin_sample_space, "\n")
+
+```
+
+## Probability of an Event
+
+The probability of an event is a measure of the likelihood that the event will occur. It is expressed as a value between 0 and 1, where 0 indicates impossibility, 1 indicates certainty, and values in between represent varying degrees of likelihood.
+
+#### Independence and Mutually Exclusive Events
+
+**Independence:** Events A and B are independent if the occurrence of one does not affect the occurrence of the other.
+
+**Mutually Exclusive (Disjoint):** Events A and B are mutually exclusive if they cannot both occur at the same time.
+
+```{r}
+# Probability of an Event Example
+
+# Number of favorable outcomes for event A
+favorable_outcomes_A <- length(event_A)
+
+# Total number of possible outcomes
+total_outcomes <- length(sample_space)
+
+# Calculate the probability of event A
+probability_A <- favorable_outcomes_A / total_outcomes
+
+# Display the probability of event A
+cat("Probability of Event A (Rolling an even number):", probability_A, "\n")
+
+```
+
+## Random Variables **and Probability Distributions**
+
+In probability theory, a **random variable** is a variable whose possible values are outcomes of a random phenomenon. Understanding random variables is crucial in modeling uncertainty and variability in real-world scenarios. Each random variable is associated with a **probability distribution**, which describes the likelihood of different outcomes.
+
+#### **Types of Random Variables**
+
+**Discrete Random Variables**
+
+-   Examples: Number of heads in coin flips, count of customers arriving at a store.
+
+-   Rationale: Takes on a countable number of distinct values.
+
+**Continuous Random Variables**
+
+-   Examples: Height of individuals, temperature, stock prices.
+
+-   Rationale: Takes on an uncountable infinite number of possible values.
+
+#### **Probability Distributions**
+
+**Probability Mass Function (PMF)**
+
+1.  For discrete random variables.
+
+2.  Gives the probability of each possible outcome.
+
+```{r}
+# Example PMF for a six-sided die
+outcomes <- 1:6
+probabilities <- rep(1/6, 6)
+pmf <- data.frame(Outcome = outcomes, Probability = probabilities)
+
+# Display the pmf
+print(pmf)
+```
+
+**Probability Density Function (PDF)**
+
+1.  For continuous random variables.
+
+2.  Describes the likelihood of a range of values.
+
+```{r}
+# Example PDF for a standard normal distribution
+x <- seq(-3, 3, length.out = 100)
+pdf <- data.frame(X = x, Probability = dnorm(x))
+
+# Display the pdf
+print(pdf)
+
+```
+
+#### **Expectation and Variance**
+
+-   **Expectation (Mean):** Represents the average value of a random variable.
+
+```{r}
+# Example calculation of expectation for a discrete random variable
+mean_discrete <- sum(outcomes * probabilities)
+
+# Display the mean
+cat("mean:", mean_discrete, "\n")
+```
+
+-   **Variance:** Measures the spread or dispersion of a random variable.
+
+```{r}
+# Example calculation of variance for a discrete random variable
+variance_discrete <- sum((outcomes - mean_discrete)^2 * probabilities)
+
+# Display the variance
+cat("variance:", variance_discrete, "\n")
+```
+
+## Real-World Application
+
+Understanding basic probability concepts is crucial in various real-world scenarios, from predicting the weather to making informed decisions in business and finance. By grasping these fundamentals, we can quantify uncertainty and make more informed choices. Random variables and probability distributions are essential in fields like finance (modeling stock prices), healthcare (analyzing patient outcomes), and many others. These concepts form the backbone of statistical modeling and machine learning algorithms.
+
+## Conclusion
+
+Probability theory provides a solid foundation for understanding uncertainty and variability in data---a cornerstone for anyone venturing into machine learning. Mastering basic probability concepts sets the stage for a deeper exploration of probability theory. In the next sections, we'll apply these concepts through practical examples and code implementations.
+
+# **Clustering**
+
+## Introduction
+
+Clustering is a technique in machine learning that involves grouping similar data points together based on certain characteristics. The goal is to uncover inherent structures within the data, making it a form of unsupervised learning. In this section, we'll explore the basics of clustering, with a focus on one popular algorithm: K-Means.
+
+## K-Means Clustering Algorithm
+
+K-Means is a partitioning method that divides a dataset into $k$ distinct, non-overlapping subsets (clusters).
+
+#### **How it Works**
+
+1.  **Initialization:** Randomly select $k$ data points as initial cluster centroids.
+
+2.  **Assignment:** Assign each data point to the cluster whose centroid is closest.
+
+3.  **Update:** Recalculate the cluster centroids based on the assigned points.
+
+4.  **Repeat:** Iterate steps 2 and 3 until convergence (minimal change in cluster assignments).
+
+```{r}
+# K-Means clustering example using built-in dataset iris
+data <- iris[, 1:4]  # Selecting relevant features
+kmeans_result <- kmeans(data, centers = 3)  # Clustering into 3 groups
+
+# Display cluster assignments
+cat("Cluster Assignments:", kmeans_result$cluster, "\n")
+
+# Display cluster centroids
+cat("Cluster Centroids:\n", kmeans_result$centers, "\n")
+
+# Scatter plot with cluster assignments
+plot(data[, c(1, 2)], col = kmeans_result$cluster, main = "K-Means Clustering", 
+     xlab = "Sepal Length", ylab = "Sepal Width")
+
+# Plotting cluster centroids
+points(kmeans_result$centers[, c(1, 2)], col = 1:3, pch = 8, cex = 2)
+
+```
+
+## Real-World Application
+
+Clustering is widely used in various domains:
+
+-   **Customer Segmentation:** Identifying groups of customers with similar purchasing behaviors.
+
+-   **Image Segmentation:** Grouping pixels with similar attributes in images.
+
+-   **Anomaly Detection:** Identifying unusual patterns in data by treating normal behavior as clusters.
+
+## Conclusion
+
+Understanding clustering algorithms like K-Means opens up opportunities to uncover patterns in data, enabling more informed decision-making. In the next sections, we'll explore additional machine learning concepts, including regression, classification, and anomaly detection.
+
+# **Regression**
+
+## Introduction
+
+Regression is a fundamental concept in machine learning that involves modeling the relationship between a dependent variable and one or more independent variables. In this section, we'll explore linear regression, a widely used regression technique, and nonlinear regression. Nonlinear regression is a powerful technique used in machine learning when the relationship between the dependent variable and the independent variables cannot be adequately modeled with a linear equation.
+
+## Linear Regression
+
+Linear regression aims to find the best-fit linear relationship between a dependent variable ($Y$) and one or more independent variables ($X$). The goal is to model the underlying pattern in the data, making it a valuable tool for prediction and understanding the relationships between variables.
+
+#### Linear Regression Model
+
+**Model Equation** $Y=β0​+β1​X1​+β2​X2​+…+βn​Xn​+ε$
+
+-   $Y$ is the dependent variable.
+
+-   $X1​,X2​,…,Xn​$ are the independent variables.
+
+-   $β0​,β1​,…,βn​$ are the model coefficients.
+
+-   $ε$ is the error term.
+
+```{r}
+# Linear regression example using built-in dataset mtcars
+linear_model <- lm(mpg ~ hp, data = mtcars)  # Predicting mpg based on horsepower
+
+# Display regression summary
+summary(linear_model)
+
+# Scatter plot with linear regression line
+plot(mtcars$hp, mtcars$mpg, main = "Linear Regression", xlab = "Horsepower", ylab = "Miles Per Gallon")
+
+# Adding regression line
+abline(linear_model, col = "red")
+
+```
+
+## Nonlinear Regression Model
+
+While linear regression assumes a linear relationship between variables, nonlinear regression allows for more complex relationships. The model equation is a nonlinear function of the independent variables, providing greater flexibility in capturing intricate patterns in the data.
+
+#### Nonlinear Regression Model
+
+**Model Equation**
+
+$Y=β0​+β1​f1​(X1​)+β2​f2​(X2​)+…+βn​fn​(Xn​)+ε$
+
+-   $Y$ is the dependent variable.
+
+-   $f1​(X1​),f2​(X2​),…,fn​(Xn​)$ are nonlinear functions of the independent variables.
+
+-   $β0​,β1​,…,βn​$ are the model coefficients.
+
+-   $ε$ is the error term.
+
+```{r}
+# Nonlinear regression example using built-in dataset mtcars
+nonlinear_model <- nls(mpg ~ a * hp^b, data = mtcars, start = list(a = 1, b = 1))  # Nonlinear model: a * hp^b
+
+# Display regression summary
+summary(nonlinear_model)
+
+# Scatter plot with nonlinear regression curve
+plot(mtcars$hp, mtcars$mpg, main = "Nonlinear Regression", xlab = "Horsepower", ylab = "Miles Per Gallon")
+
+# Adding nonlinear regression curve
+lines(mtcars$hp, predict(nonlinear_model), col = "red")
+
+```
+
+## **Real-World Applications**
+
+Linear regression finds applications in various fields:
+
+-   **Economics:** Predicting economic indicators based on various factors.
+
+-   **Healthcare:** Modeling the relationship between patient characteristics and health outcomes.
+
+-   **Finance:** Predicting stock prices based on historical data.
+
+Nonlinear regression is applicable in scenarios where relationships are better represented by curves or other nonlinear patterns:
+
+-   **Pharmacokinetics:** Modeling drug concentration over time in the body.
+
+-   **Biology:** Modeling population growth, enzyme kinetics, etc.
+
+-   **Physics:** Modeling complex physical phenomena.
+
+## **Conclusion**
+
+Understanding linear regression allows us to make predictions and gain insights into the relationships between variables. Nonlinear regression expands our modeling capabilities, allowing us to capture more intricate relationships in the data. In the upcoming sections, we'll explore classification, and anomaly detection.
+
+# **Classification**
+
+## **Introduction**
+
+Classification is a type of supervised machine learning where the goal is to predict the categorical class labels of new instances based on past observations. Classification involves training a model to learn the mapping between input features and predefined categories or classes. The trained model can then be used to predict the class labels of new, unseen instances. In this section, we'll explore the basics of classification, with a focus on one of the most widely used algorithms: Decision Trees.
+
+## **Decision Trees for Classification**
+
+A decision tree is a tree-like model where each internal node represents a decision based on a feature, each branch represents the outcome of the decision, and each leaf node represents the class label.
+
+#### **How it Works**
+
+1.  **Feature Selection**: Choose the feature that best splits the data into classes (based on criteria like Gini impurity or information gain).
+
+2.  **Splitting:** Create a branch for each possible value of the selected feature.
+
+3.  **Repeat:** Recursively apply steps 1 and 2 to each subset of data until a stopping criterion is met.
+
+4.  **Leaf Nodes:** Assign a class label to each leaf node.
+
+```{r}
+# Decision tree example using built-in dataset iris
+library(rpart)
+
+# Creating a decision tree model
+tree_model <- rpart(Species ~ ., data = iris, method = "class")
+
+# Displaying the decision tree plot
+plot(tree_model)
+text(tree_model)
+
+```
+
+## **Real-World Application**
+
+Decision trees find applications in various domains:
+
+-   **Medical Diagnosis:** Predicting diseases based on patient symptoms.
+
+-   **Customer Churn Prediction:** Identifying customers likely to churn from a service.
+
+-   **Credit Scoring:** Assessing credit risk of loan applicants.
+
+## **Conclusion**
+
+Classification is a powerful tool for making predictions and categorizing data into distinct classes. In the last sections, we'll explore anomaly detection, a technique used to identify unusual patterns in data.
+
+# **Anomaly Detection**
+
+## Introduction
+
+Anomaly detection, also known as outlier detection, is a machine learning technique used to identify patterns in data that deviate significantly from the norm. In this section, we'll explore the basics of anomaly detection, with a focus on a common method: Z-score-based outlier detection.
+
+## **Outlier Detection Methods**
+
+**Z-Score Method**
+
+-   Calculates the Z-score for each data point, representing how many standard deviations it is from the mean.
+
+-   Points with a Z-score above a certain threshold are considered outliers.
+
+**Example:** Outlier Detection using Z-Score
+
+```{r}
+# Outlier detection using Z-score
+data <- c(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
+
+# Calculate Z-scores
+z_scores <- (data - mean(data)) / sd(data)
+
+# Set Z-score threshold for outliers
+z_threshold <- 2
+
+# Identify outliers
+outliers <- abs(z_scores) > z_threshold
+
+# Display identified outliers
+cat("Outliers:", data[outliers], "\n")
+
+# Scatter plot with highlighted outliers
+plot(1:length(data), data, pch = ifelse(outliers, 19, 1), main = "Scatter Plot with Outliers", xlab = "Index", ylab = "Values")
+
+```
+
+## **Real-World Application**
+
+Anomaly detection is applied in various fields:
+
+-   **Fraud Detection:** Identifying unusual patterns in financial transactions.
+
+-   **Network Security:** Detecting unusual behavior in network traffic.
+
+-   **Manufacturing Quality Control:** Identifying defective products.
+
+## **Conclusion**
+
+Anomaly detection is crucial for identifying unusual patterns that may indicate errors or potential issues.

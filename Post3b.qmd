@@ -1,0 +1,36 @@
+---
+title: "Linear Regression"
+---
+
+Linear regression aims to find the best-fit linear relationship between a dependent variable ($Y$) and one or more independent variables ($X$). The goal is to model the underlying pattern in the data, making it a valuable tool for prediction and understanding the relationships between variables.
+
+#### **Linear Regression Model**
+
+**Model Equation**
+
+$Y=β0​+β1​X1​+β2​X2​+…+βn​Xn​+ε$
+
+-   $Y$ is the dependent variable.
+
+-   $X1​,X2​,…,Xn​$ are the independent variables.
+
+-   $β0​,β1​,…,βn​$ are the model coefficients.
+
+-   $ε$ is the error term.
+
+```{r}
+# Linear regression example using built-in dataset mtcars
+linear_model <- lm(mpg ~ hp, data = mtcars)  # Predicting mpg based on horsepower
+
+# Display regression summary
+summary(linear_model)
+
+# Scatter plot with linear regression line
+plot(mtcars$hp, mtcars$mpg, main = "Linear Regression", xlab = "Horsepower", ylab = "Miles Per Gallon")
+
+# Adding regression line
+abline(linear_model, col = "red")
+
+```
+
+## 

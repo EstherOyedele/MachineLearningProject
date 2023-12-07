@@ -1,0 +1,20 @@
+---
+title: "About"
+image: Esther_Oyedele.jpg
+about:
+  template: trestles
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: www.linkedin.com/in/esther-oyedele
+    - icon: github
+      text: Github
+      href: https://github.com/EstherOyedele
+---
+
+## About this blog
+
+My name is Esther Oyedele, and I am currently a Doctoral student in Geosciences at Virginia Tech.
+
+This blog is part of a project for my Machine Learning class, where I aim to provide a beginner-friendly exploration of the fundamentals of machine learning. Please note that this content covers the basics and includes common code snippets without delving into technical complexities. If you are looking to embark on your machine learning journey, I hope this blog serves as a helpful introduction to essential concepts.
+---

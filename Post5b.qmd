@@ -1,0 +1,32 @@
+---
+title: "Outlier Detection Methods"
+---
+
+**Z-Score Method**
+
+-   Calculates the Z-score for each data point, representing how many standard deviations it is from the mean.
+
+-   Points with a Z-score above a certain threshold are considered outliers.
+
+**Example:** Outlier Detection using Z-Score
+
+```{r}
+# Outlier detection using Z-score
+data <- c(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
+
+# Calculate Z-scores
+z_scores <- (data - mean(data)) / sd(data)
+
+# Set Z-score threshold for outliers
+z_threshold <- 2
+
+# Identify outliers
+outliers <- abs(z_scores) > z_threshold
+
+# Display identified outliers
+cat("Outliers:", data[outliers], "\n")
+
+# Scatter plot with highlighted outliers
+plot(1:length(data), data, pch = ifelse(outliers, 19, 1), main = "Scatter Plot with Outliers", xlab = "Index", ylab = "Values")
+
+```

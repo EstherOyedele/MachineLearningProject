@@ -1,0 +1,5 @@
+---
+title: "Introduction"
+---
+
+Regression is a fundamental concept in machine learning that involves modeling the relationship between a dependent variable and one or more independent variables. In this section, we'll explore linear regression, a widely used regression technique, and nonlinear regression. Nonlinear regression is a powerful technique used in machine learning when the relationship between the dependent variable and the independent variables cannot be adequately modeled with a linear equation.

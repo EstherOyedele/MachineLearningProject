@@ -1,0 +1,30 @@
+---
+title: "Decision Trees for Classification"
+---
+
+A decision tree is a tree-like model where each internal node represents a decision based on a feature, each branch represents the outcome of the decision, and each leaf node represents the class label.
+
+#### **How it Works**
+
+1.  **Feature Selection**: Choose the feature that best splits the data into classes (based on criteria like Gini impurity or information gain).
+
+2.  **Splitting:** Create a branch for each possible value of the selected feature.
+
+3.  **Repeat:** Recursively apply steps 1 and 2 to each subset of data until a stopping criterion is met.
+
+4.  **Leaf Nodes:** Assign a class label to each leaf node.
+
+```{r}
+# Decision tree example using built-in dataset iris
+library(rpart)
+
+# Creating a decision tree model
+tree_model <- rpart(Species ~ ., data = iris, method = "class")
+
+# Displaying the decision tree plot
+plot(tree_model)
+text(tree_model)
+
+```
+
+## 

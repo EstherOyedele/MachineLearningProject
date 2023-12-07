@@ -1,0 +1,36 @@
+---
+title: "Nonlinear Regression"
+---
+
+While linear regression assumes a linear relationship between variables, nonlinear regression allows for more complex relationships. The model equation is a nonlinear function of the independent variables, providing greater flexibility in capturing intricate patterns in the data.
+
+#### **Nonlinear Regression Model**
+
+**Model Equation**
+
+$Y=β0​+β1​f1​(X1​)+β2​f2​(X2​)+…+βn​fn​(Xn​)+ε$
+
+-   $Y$ is the dependent variable.
+
+-   $f1​(X1​),f2​(X2​),…,fn​(Xn​)$ are nonlinear functions of the independent variables.
+
+-   $β0​,β1​,…,βn​$ are the model coefficients.
+
+-   $ε$ is the error term.
+
+```{r}
+# Nonlinear regression example using built-in dataset mtcars
+nonlinear_model <- nls(mpg ~ a * hp^b, data = mtcars, start = list(a = 1, b = 1))  # Nonlinear model: a * hp^b
+
+# Display regression summary
+summary(nonlinear_model)
+
+# Scatter plot with nonlinear regression curve
+plot(mtcars$hp, mtcars$mpg, main = "Nonlinear Regression", xlab = "Horsepower", ylab = "Miles Per Gallon")
+
+# Adding nonlinear regression curve
+lines(mtcars$hp, predict(nonlinear_model), col = "red")
+
+```
+
+## 

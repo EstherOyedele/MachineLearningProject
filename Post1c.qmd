@@ -1,0 +1,77 @@
+---
+title: "Random Variables and Probability Distributions"
+---
+
+In probability theory, a **random variable** is a variable whose possible values are outcomes of a random phenomenon. Understanding random variables is crucial in modeling uncertainty and variability in real-world scenarios. Each random variable is associated with a **probability distribution**, which describes the likelihood of different outcomes.
+
+#### **Types of Random Variables**
+
+**Discrete Random Variables**
+
+-   Examples: Number of heads in coin flips, count of customers arriving at a store.
+
+-   Rationale: Takes on a countable number of distinct values.
+
+**Continuous Random Variables**
+
+-   Examples: Height of individuals, temperature, stock prices.
+
+-   Rationale: Takes on an uncountable infinite number of possible values.
+
+#### **Probability Distributions**
+
+**Probability Mass Function (PMF)**
+
+1.  For discrete random variables.
+
+2.  Gives the probability of each possible outcome.
+
+```{r}
+# Example PMF for a six-sided die
+outcomes <- 1:6
+probabilities <- rep(1/6, 6)
+pmf <- data.frame(Outcome = outcomes, Probability = probabilities)
+
+# Display the pmf
+print(pmf)
+```
+
+**Probability Density Function (PDF)**
+
+1.  For continuous random variables.
+
+2.  Describes the likelihood of a range of values.
+
+```{r}
+# Example PDF for a standard normal distribution
+x <- seq(-3, 3, length.out = 100)
+pdf <- data.frame(X = x, Probability = dnorm(x))
+
+# Display the pdf
+print(pdf)
+
+```
+
+#### **Expectation and Variance**
+
+-   **Expectation (Mean):** Represents the average value of a random variable.
+
+```{r}
+# Example calculation of expectation for a discrete random variable
+mean_discrete <- sum(outcomes * probabilities)
+
+# Display the mean
+cat("mean:", mean_discrete, "\n")
+```
+
+-   **Variance:** Measures the spread or dispersion of a random variable.
+
+```{r}
+# Example calculation of variance for a discrete random variable
+variance_discrete <- sum((outcomes - mean_discrete)^2 * probabilities)
+
+# Display the variance
+cat("variance:", variance_discrete, "\n")
+```
+
+## 

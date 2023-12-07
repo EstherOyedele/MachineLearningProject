@@ -1,0 +1,74 @@
+project:
+  type: website
+  output-dir: docs
+theme:
+  light: flatly
+  dark: darkly
+website:
+  title: "Machine Learning"
+  navbar:
+    right:
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com/EstherOyedele
+          - text: Report a Bug
+            url:  https://github.com/EstherOyedele
+    background: secondary
+    search: true
+    left:
+      - about.qmd
+      - text: "Overview"
+        file: overview.qmd
+      - text: "Post"
+        file: Post1a.qmd
+  sidebar:
+    title: Blog Posts
+    style: "docked"
+    search: true
+    background: dark
+    foeground: light
+    border: true
+    alignment: left
+    collapse-level: 1
+    pinned: true
+    contents:
+      - section: "Probabilities"
+        contents:
+          - Post1a.qmd
+          - Post1b.qmd
+          - Post1c.qmd
+          - Post1d.qmd
+          - Post1e.qmd
+      - section: "Clustering"
+        contents:
+          - Post2a.qmd
+          - Post2b.qmd
+          - Post2c.qmd
+          - Post2d.qmd
+      - section: "Regression"
+        contents:
+          - Post3a.qmd
+          - Post3b.qmd
+          - Post3c.qmd
+          - Post3d.qmd
+          - Post3e.qmd
+      - section: "Classification"
+        contents:
+          - Post4a.qmd
+          - Post4b.qmd
+          - Post4c.qmd
+          - Post4d.qmd
+      - section: "Anomaly detection"
+        contents:
+          - Post5a.qmd
+          - Post5b.qmd
+          - Post5c.qmd
+          - Post5d.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+editor: visual
+copyright: "Esther Oyedele, 2023. All Rights Reserved"

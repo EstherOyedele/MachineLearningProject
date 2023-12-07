@@ -1,0 +1,37 @@
+---
+title: "K-Means Clustering Algorithm"
+---
+
+K-Means is a partitioning method that divides a dataset into $k$ distinct, non-overlapping subsets (clusters).
+
+#### **How it Works**
+
+1.  **Initialization:** Randomly select $k$ data points as initial cluster centroids.
+
+2.  **Assignment:** Assign each data point to the cluster whose centroid is closest.
+
+3.  **Update:** Recalculate the cluster centroids based on the assigned points.
+
+4.  **Repeat:** Iterate steps 2 and 3 until convergence (minimal change in cluster assignments).
+
+```{r}
+# K-Means clustering example using built-in dataset iris
+data <- iris[, 1:4]  # Selecting relevant features
+kmeans_result <- kmeans(data, centers = 3)  # Clustering into 3 groups
+
+# Display cluster assignments
+cat("Cluster Assignments:", kmeans_result$cluster, "\n")
+
+# Display cluster centroids
+cat("Cluster Centroids:\n", kmeans_result$centers, "\n")
+
+# Scatter plot with cluster assignments
+plot(data[, c(1, 2)], col = kmeans_result$cluster, main = "K-Means Clustering", 
+     xlab = "Sepal Length", ylab = "Sepal Width")
+
+# Plotting cluster centroids
+points(kmeans_result$centers[, c(1, 2)], col = 1:3, pch = 8, cex = 2)
+
+```
+
+## 

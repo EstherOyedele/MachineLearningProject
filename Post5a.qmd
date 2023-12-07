@@ -1,0 +1,5 @@
+---
+title: "Introduction"
+---
+
+Anomaly detection, also known as outlier detection, is a machine learning technique used to identify patterns in data that deviate significantly from the norm. In this section, we'll explore the basics of anomaly detection, with a focus on a common method: Z-score-based outlier detection.

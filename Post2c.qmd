@@ -1,0 +1,13 @@
+---
+title: "Real-World Application"
+---
+
+Clustering is widely used in various domains:
+
+-   **Customer Segmentation:** Identifying groups of customers with similar purchasing behaviors.
+
+-   **Image Segmentation:** Grouping pixels with similar attributes in images.
+
+-   **Anomaly Detection:** Identifying unusual patterns in data by treating normal behavior as clusters.
+
+## 

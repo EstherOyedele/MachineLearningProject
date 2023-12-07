@@ -1,0 +1,5 @@
+---
+title: "Introduction"
+---
+
+Classification is a type of supervised machine learning where the goal is to predict the categorical class labels of new instances based on past observations. Classification involves training a model to learn the mapping between input features and predefined categories or classes. The trained model can then be used to predict the class labels of new, unseen instances. In this section, we'll explore the basics of classification, with a focus on one of the most widely used algorithms, Decision Trees.

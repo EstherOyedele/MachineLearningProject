@@ -1,5 +1,8 @@
 ---
 title: "Decision Trees for Classification"
+format: 
+  html:
+    code-fold: true
 ---
 
 A decision tree is a tree-like model where each internal node represents a decision based on a feature, each branch represents the outcome of the decision, and each leaf node represents the class label.

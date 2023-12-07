@@ -1,5 +1,8 @@
 ---
 title: "Nonlinear Regression"
+format: 
+  html:
+    code-fold: true
 ---
 
 While linear regression assumes a linear relationship between variables, nonlinear regression allows for more complex relationships. The model equation is a nonlinear function of the independent variables, providing greater flexibility in capturing intricate patterns in the data.

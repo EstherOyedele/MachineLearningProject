@@ -1,5 +1,8 @@
 ---
 title: "Basic Probability Concepts"
+format: 
+  html:
+    code-fold: true
 ---
 
 **Events:** In probability theory, an event is an outcome or a set of outcomes of a random experiment. Events are the events we are interested in, and they can range from simple outcomes to complex combinations.

@@ -1,5 +1,8 @@
 ---
 title: "Outlier Detection Methods"
+format: 
+  html:
+    code-fold: true
 ---
 
 **Z-Score Method**

@@ -403,11 +403,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><span class="math inline">\(ε\)</span> is the error term.</p></li>
 </ul>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nonlinear regression example using built-in dataset mtcars</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nonlinear_model <span class="ot">&lt;-</span> <span class="fu">nls</span>(mpg <span class="sc">~</span> a <span class="sc">*</span> hp<span class="sc">^</span>b, <span class="at">data =</span> mtcars, <span class="at">start =</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">1</span>))  <span class="co"># Nonlinear model: a * hp^b</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display regression summary</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nonlinear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Formula: mpg ~ a * hp^b
@@ -424,11 +427,14 @@ Residual standard error: 3.102 on 30 degrees of freedom
 Number of iterations to convergence: 18 
 Achieved convergence tolerance: 5.914e-07</code></pre>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with nonlinear regression curve</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>hp, mtcars<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">"Nonlinear Regression"</span>, <span class="at">xlab =</span> <span class="st">"Horsepower"</span>, <span class="at">ylab =</span> <span class="st">"Miles Per Gallon"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding nonlinear regression curve</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mtcars<span class="sc">$</span>hp, <span class="fu">predict</span>(nonlinear_model), <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="Post3c_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>

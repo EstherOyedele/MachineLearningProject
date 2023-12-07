@@ -1,5 +1,8 @@
 ---
 title: "Random Variables and Probability Distributions"
+format: 
+  html:
+    code-fold: true
 ---
 
 In probability theory, a **random variable** is a variable whose possible values are outcomes of a random phenomenon. Understanding random variables is crucial in modeling uncertainty and variability in real-world scenarios. Each random variable is associated with a **probability distribution**, which describes the likelihood of different outcomes.

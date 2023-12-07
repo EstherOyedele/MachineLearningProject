@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Machine Learning - Fundamentals of Machine Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Machine Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../overview.html" rel="" target="">
+ <span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../Post1a.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Post</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-github" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-github">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/EstherOyedele" rel="" target="">
+ <span class="dropdown-text">Source Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/EstherOyedele" rel="" target="">
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Fundamentals of Machine Learning</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Fundamentals of Machine Learning</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Probabilities</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Probability Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post1c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random Variables and Probability Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post1d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-World Application</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post1e.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Clustering</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post2a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post2b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">K-Means Clustering Algorithm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post2c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-World Application</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post2d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Regression</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post3a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post3b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post3c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nonlinear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post3d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-World Applications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post3e.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Classification</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post4a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post4b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees for Classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post4c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-World Application</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post4d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Anomaly detection</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post5a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post5b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Outlier Detection Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post5c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-World Application</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Post5d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="probability-theory-and-random-variables" class="level1">
+<h1>Probability Theory and Random Variables</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Probability theory begins with the fundamental concepts of events and sample space. These concepts lay the groundwork for understanding the likelihood of different outcomes in a given scenario. In this section, we’ll explore these basic probability concepts and how they form the building blocks of more advanced probability theory.</p>
+</section>
+<section id="basic-probability-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="basic-probability-concepts">Basic Probability Concepts</h2>
+<p><strong>Events:</strong> In probability theory, an event is an outcome or a set of outcomes of a random experiment. Events are the events we are interested in, and they can range from simple outcomes to complex combinations.</p>
+<p><strong>Sample Space:</strong> The sample space is the set of all possible outcomes of a random experiment. It encompasses every possible scenario, providing a comprehensive view of the potential results.</p>
+<p><strong>Example 1:</strong> Consider rolling a six-sided die.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Events and Sample Space Example</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the sample space for rolling a six-sided die</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sample_space <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the event "rolling an even number"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>event_A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the event "rolling a number greater than 4"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>event_B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the events and sample space</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Event A (Rolling an even number):"</span>, event_A, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Event A (Rolling an even number): 2 4 6 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Event B (Rolling a number greater than 4):"</span>, event_B, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Event B (Rolling a number greater than 4): 5 6 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample Space:"</span>, sample_space, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample Space: 1 2 3 4 5 6 </code></pre>
+</div>
+</div>
+<p><strong>Example 2:</strong> Consider flipping a coin with Head and Tail</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample Space Example 2</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the sample space for flipping a coin</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>coin_sample_space <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Heads"</span>, <span class="st">"Tails"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the sample space for flipping a coin</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample Space for Flipping a Coin:"</span>, coin_sample_space, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample Space for Flipping a Coin: Heads Tails </code></pre>
+</div>
+</div>
+</section>
+<section id="probability-of-an-event" class="level2">
+<h2 class="anchored" data-anchor-id="probability-of-an-event">Probability of an Event</h2>
+<p>The probability of an event is a measure of the likelihood that the event will occur. It is expressed as a value between 0 and 1, where 0 indicates impossibility, 1 indicates certainty, and values in between represent varying degrees of likelihood.</p>
+<section id="independence-and-mutually-exclusive-events" class="level4">
+<h4 class="anchored" data-anchor-id="independence-and-mutually-exclusive-events">Independence and Mutually Exclusive Events</h4>
+<p><strong>Independence:</strong> Events A and B are independent if the occurrence of one does not affect the occurrence of the other.</p>
+<p><strong>Mutually Exclusive (Disjoint):</strong> Events A and B are mutually exclusive if they cannot both occur at the same time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of an Event Example</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of favorable outcomes for event A</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>favorable_outcomes_A <span class="ot">&lt;-</span> <span class="fu">length</span>(event_A)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of possible outcomes</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>total_outcomes <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_space)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of event A</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>probability_A <span class="ot">&lt;-</span> favorable_outcomes_A <span class="sc">/</span> total_outcomes</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the probability of event A</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Probability of Event A (Rolling an even number):"</span>, probability_A, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Probability of Event A (Rolling an even number): 0.5 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="random-variables-and-probability-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="random-variables-and-probability-distributions">Random Variables <strong>and Probability Distributions</strong></h2>
+<p>In probability theory, a <strong>random variable</strong> is a variable whose possible values are outcomes of a random phenomenon. Understanding random variables is crucial in modeling uncertainty and variability in real-world scenarios. Each random variable is associated with a <strong>probability distribution</strong>, which describes the likelihood of different outcomes.</p>
+<section id="types-of-random-variables" class="level4">
+<h4 class="anchored" data-anchor-id="types-of-random-variables"><strong>Types of Random Variables</strong></h4>
+<p><strong>Discrete Random Variables</strong></p>
+<ul>
+<li><p>Examples: Number of heads in coin flips, count of customers arriving at a store.</p></li>
+<li><p>Rationale: Takes on a countable number of distinct values.</p></li>
+</ul>
+<p><strong>Continuous Random Variables</strong></p>
+<ul>
+<li><p>Examples: Height of individuals, temperature, stock prices.</p></li>
+<li><p>Rationale: Takes on an uncountable infinite number of possible values.</p></li>
+</ul>
+</section>
+<section id="probability-distributions" class="level4">
+<h4 class="anchored" data-anchor-id="probability-distributions"><strong>Probability Distributions</strong></h4>
+<p><strong>Probability Mass Function (PMF)</strong></p>
+<ol type="1">
+<li><p>For discrete random variables.</p></li>
+<li><p>Gives the probability of each possible outcome.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example PMF for a six-sided die</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>probabilities <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Outcome =</span> outcomes, <span class="at">Probability =</span> probabilities)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the pmf</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pmf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Outcome Probability
+1       1   0.1666667
+2       2   0.1666667
+3       3   0.1666667
+4       4   0.1666667
+5       5   0.1666667
+6       6   0.1666667</code></pre>
+</div>
+</div>
+<p><strong>Probability Density Function (PDF)</strong></p>
+<ol type="1">
+<li><p>For continuous random variables.</p></li>
+<li><p>Describes the likelihood of a range of values.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example PDF for a standard normal distribution</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>pdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X =</span> x, <span class="at">Probability =</span> <span class="fu">dnorm</span>(x))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the pdf</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              X Probability
+1   -3.00000000 0.004431848
+2   -2.93939394 0.005305788
+3   -2.87878788 0.006328776
+4   -2.81818182 0.007521325
+5   -2.75757576 0.008905818
+6   -2.69696970 0.010506499
+7   -2.63636364 0.012349433
+8   -2.57575758 0.014462415
+9   -2.51515152 0.016874830
+10  -2.45454545 0.019617461
+11  -2.39393939 0.022722232
+12  -2.33333333 0.026221889
+13  -2.27272727 0.030149614
+14  -2.21212121 0.034538568
+15  -2.15151515 0.039421369
+16  -2.09090909 0.044829497
+17  -2.03030303 0.050792644
+18  -1.96969697 0.057338005
+19  -1.90909091 0.064489518
+20  -1.84848485 0.072267075
+21  -1.78787879 0.080685709
+22  -1.72727273 0.089754773
+23  -1.66666667 0.099477139
+24  -1.60606061 0.109848419
+25  -1.54545455 0.120856256
+26  -1.48484848 0.132479675
+27  -1.42424242 0.144688550
+28  -1.36363636 0.157443188
+29  -1.30303030 0.170694048
+30  -1.24242424 0.184381641
+31  -1.18181818 0.198436597
+32  -1.12121212 0.212779929
+33  -1.06060606 0.227323506
+34  -1.00000000 0.241970725
+35  -0.93939394 0.256617400
+36  -0.87878788 0.271152848
+37  -0.81818182 0.285461167
+38  -0.75757576 0.299422683
+39  -0.69696970 0.312915556
+40  -0.63636364 0.325817499
+41  -0.57575758 0.338007591
+42  -0.51515152 0.349368138
+43  -0.45454545 0.359786558
+44  -0.39393939 0.369157220
+45  -0.33333333 0.377383228
+46  -0.27272727 0.384378084
+47  -0.21212121 0.390067204
+48  -0.15151515 0.394389234
+49  -0.09090909 0.397297160
+50  -0.03030303 0.398759153
+51   0.03030303 0.398759153
+52   0.09090909 0.397297160
+53   0.15151515 0.394389234
+54   0.21212121 0.390067204
+55   0.27272727 0.384378084
+56   0.33333333 0.377383228
+57   0.39393939 0.369157220
+58   0.45454545 0.359786558
+59   0.51515152 0.349368138
+60   0.57575758 0.338007591
+61   0.63636364 0.325817499
+62   0.69696970 0.312915556
+63   0.75757576 0.299422683
+64   0.81818182 0.285461167
+65   0.87878788 0.271152848
+66   0.93939394 0.256617400
+67   1.00000000 0.241970725
+68   1.06060606 0.227323506
+69   1.12121212 0.212779929
+70   1.18181818 0.198436597
+71   1.24242424 0.184381641
+72   1.30303030 0.170694048
+73   1.36363636 0.157443188
+74   1.42424242 0.144688550
+75   1.48484848 0.132479675
+76   1.54545455 0.120856256
+77   1.60606061 0.109848419
+78   1.66666667 0.099477139
+79   1.72727273 0.089754773
+80   1.78787879 0.080685709
+81   1.84848485 0.072267075
+82   1.90909091 0.064489518
+83   1.96969697 0.057338005
+84   2.03030303 0.050792644
+85   2.09090909 0.044829497
+86   2.15151515 0.039421369
+87   2.21212121 0.034538568
+88   2.27272727 0.030149614
+89   2.33333333 0.026221889
+90   2.39393939 0.022722232
+91   2.45454545 0.019617461
+92   2.51515152 0.016874830
+93   2.57575758 0.014462415
+94   2.63636364 0.012349433
+95   2.69696970 0.010506499
+96   2.75757576 0.008905818
+97   2.81818182 0.007521325
+98   2.87878788 0.006328776
+99   2.93939394 0.005305788
+100  3.00000000 0.004431848</code></pre>
+</div>
+</div>
+</section>
+<section id="expectation-and-variance" class="level4">
+<h4 class="anchored" data-anchor-id="expectation-and-variance"><strong>Expectation and Variance</strong></h4>
+<ul>
+<li><strong>Expectation (Mean):</strong> Represents the average value of a random variable.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example calculation of expectation for a discrete random variable</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mean_discrete <span class="ot">&lt;-</span> <span class="fu">sum</span>(outcomes <span class="sc">*</span> probabilities)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the mean</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"mean:"</span>, mean_discrete, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mean: 3.5 </code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Variance:</strong> Measures the spread or dispersion of a random variable.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example calculation of variance for a discrete random variable</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>variance_discrete <span class="ot">&lt;-</span> <span class="fu">sum</span>((outcomes <span class="sc">-</span> mean_discrete)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> probabilities)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the variance</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"variance:"</span>, variance_discrete, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>variance: 2.916667 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="real-world-application" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-application">Real-World Application</h2>
+<p>Understanding basic probability concepts is crucial in various real-world scenarios, from predicting the weather to making informed decisions in business and finance. By grasping these fundamentals, we can quantify uncertainty and make more informed choices. Random variables and probability distributions are essential in fields like finance (modeling stock prices), healthcare (analyzing patient outcomes), and many others. These concepts form the backbone of statistical modeling and machine learning algorithms.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Probability theory provides a solid foundation for understanding uncertainty and variability in data—a cornerstone for anyone venturing into machine learning. Mastering basic probability concepts sets the stage for a deeper exploration of probability theory. In the next sections, we’ll apply these concepts through practical examples and code implementations.</p>
+</section>
+</section>
+<section id="clustering" class="level1">
+<h1><strong>Clustering</strong></h1>
+<section id="introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-1">Introduction</h2>
+<p>Clustering is a technique in machine learning that involves grouping similar data points together based on certain characteristics. The goal is to uncover inherent structures within the data, making it a form of unsupervised learning. In this section, we’ll explore the basics of clustering, with a focus on one popular algorithm: K-Means.</p>
+</section>
+<section id="k-means-clustering-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="k-means-clustering-algorithm">K-Means Clustering Algorithm</h2>
+<p>K-Means is a partitioning method that divides a dataset into <span class="math inline">\(k\)</span> distinct, non-overlapping subsets (clusters).</p>
+<section id="how-it-works" class="level4">
+<h4 class="anchored" data-anchor-id="how-it-works"><strong>How it Works</strong></h4>
+<ol type="1">
+<li><p><strong>Initialization:</strong> Randomly select <span class="math inline">\(k\)</span> data points as initial cluster centroids.</p></li>
+<li><p><strong>Assignment:</strong> Assign each data point to the cluster whose centroid is closest.</p></li>
+<li><p><strong>Update:</strong> Recalculate the cluster centroids based on the assigned points.</p></li>
+<li><p><strong>Repeat:</strong> Iterate steps 2 and 3 until convergence (minimal change in cluster assignments).</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># K-Means clustering example using built-in dataset iris</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]  <span class="co"># Selecting relevant features</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>kmeans_result <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data, <span class="at">centers =</span> <span class="dv">3</span>)  <span class="co"># Clustering into 3 groups</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display cluster assignments</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cluster Assignments:"</span>, kmeans_result<span class="sc">$</span>cluster, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cluster Assignments: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 2 2 2 1 2 2 2 2 2 2 1 1 2 2 2 2 1 2 1 2 1 2 2 1 1 2 2 2 2 2 1 2 2 2 2 1 2 2 2 1 2 2 2 1 2 2 1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display cluster centroids</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cluster Centroids:</span><span class="sc">\n</span><span class="st">"</span>, kmeans_result<span class="sc">$</span>centers, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cluster Centroids:
+ 5.901613 6.85 5.006 2.748387 3.073684 3.428 4.393548 5.742105 1.462 1.433871 2.071053 0.246 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with cluster assignments</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="at">col =</span> kmeans_result<span class="sc">$</span>cluster, <span class="at">main =</span> <span class="st">"K-Means Clustering"</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sepal Length"</span>, <span class="at">ylab =</span> <span class="st">"Sepal Width"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting cluster centroids</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(kmeans_result<span class="sc">$</span>centers[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">8</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="backup_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="real-world-application-1" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-application-1">Real-World Application</h2>
+<p>Clustering is widely used in various domains:</p>
+<ul>
+<li><p><strong>Customer Segmentation:</strong> Identifying groups of customers with similar purchasing behaviors.</p></li>
+<li><p><strong>Image Segmentation:</strong> Grouping pixels with similar attributes in images.</p></li>
+<li><p><strong>Anomaly Detection:</strong> Identifying unusual patterns in data by treating normal behavior as clusters.</p></li>
+</ul>
+</section>
+<section id="conclusion-1" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-1">Conclusion</h2>
+<p>Understanding clustering algorithms like K-Means opens up opportunities to uncover patterns in data, enabling more informed decision-making. In the next sections, we’ll explore additional machine learning concepts, including regression, classification, and anomaly detection.</p>
+</section>
+</section>
+<section id="regression" class="level1">
+<h1><strong>Regression</strong></h1>
+<section id="introduction-2" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-2">Introduction</h2>
+<p>Regression is a fundamental concept in machine learning that involves modeling the relationship between a dependent variable and one or more independent variables. In this section, we’ll explore linear regression, a widely used regression technique, and nonlinear regression. Nonlinear regression is a powerful technique used in machine learning when the relationship between the dependent variable and the independent variables cannot be adequately modeled with a linear equation.</p>
+</section>
+<section id="linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
+<p>Linear regression aims to find the best-fit linear relationship between a dependent variable (<span class="math inline">\(Y\)</span>) and one or more independent variables (<span class="math inline">\(X\)</span>). The goal is to model the underlying pattern in the data, making it a valuable tool for prediction and understanding the relationships between variables.</p>
+<section id="linear-regression-model" class="level4">
+<h4 class="anchored" data-anchor-id="linear-regression-model">Linear Regression Model</h4>
+<p><strong>Model Equation</strong> <span class="math inline">\(Y=β0​+β1​X1​+β2​X2​+…+βn​Xn​+ε\)</span></p>
+<ul>
+<li><p><span class="math inline">\(Y\)</span> is the dependent variable.</p></li>
+<li><p><span class="math inline">\(X1​,X2​,…,Xn​\)</span> are the independent variables.</p></li>
+<li><p><span class="math inline">\(β0​,β1​,…,βn​\)</span> are the model coefficients.</p></li>
+<li><p><span class="math inline">\(ε\)</span> is the error term.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression example using built-in dataset mtcars</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)  <span class="co"># Predicting mpg based on horsepower</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display regression summary</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ hp, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.7121 -2.1122 -0.8854  1.5819  8.2360 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***
+hp          -0.06823    0.01012  -6.742 1.79e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.863 on 30 degrees of freedom
+Multiple R-squared:  0.6024,    Adjusted R-squared:  0.5892 
+F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with linear regression line</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>hp, mtcars<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">"Linear Regression"</span>, <span class="at">xlab =</span> <span class="st">"Horsepower"</span>, <span class="at">ylab =</span> <span class="st">"Miles Per Gallon"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding regression line</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(linear_model, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="backup_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="nonlinear-regression-model" class="level2">
+<h2 class="anchored" data-anchor-id="nonlinear-regression-model">Nonlinear Regression Model</h2>
+<p>While linear regression assumes a linear relationship between variables, nonlinear regression allows for more complex relationships. The model equation is a nonlinear function of the independent variables, providing greater flexibility in capturing intricate patterns in the data.</p>
+<section id="nonlinear-regression-model-1" class="level4">
+<h4 class="anchored" data-anchor-id="nonlinear-regression-model-1">Nonlinear Regression Model</h4>
+<p><strong>Model Equation</strong></p>
+<p><span class="math inline">\(Y=β0​+β1​f1​(X1​)+β2​f2​(X2​)+…+βn​fn​(Xn​)+ε\)</span></p>
+<ul>
+<li><p><span class="math inline">\(Y\)</span> is the dependent variable.</p></li>
+<li><p><span class="math inline">\(f1​(X1​),f2​(X2​),…,fn​(Xn​)\)</span> are nonlinear functions of the independent variables.</p></li>
+<li><p><span class="math inline">\(β0​,β1​,…,βn​\)</span> are the model coefficients.</p></li>
+<li><p><span class="math inline">\(ε\)</span> is the error term.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nonlinear regression example using built-in dataset mtcars</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>nonlinear_model <span class="ot">&lt;-</span> <span class="fu">nls</span>(mpg <span class="sc">~</span> a <span class="sc">*</span> hp<span class="sc">^</span>b, <span class="at">data =</span> mtcars, <span class="at">start =</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">1</span>))  <span class="co"># Nonlinear model: a * hp^b</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display regression summary</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nonlinear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Formula: mpg ~ a * hp^b
+
+Parameters:
+   Estimate Std. Error t value Pr(&gt;|t|)    
+a 272.11686   74.03677   3.675 0.000924 ***
+b  -0.54043    0.05826  -9.277 2.55e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.102 on 30 degrees of freedom
+
+Number of iterations to convergence: 18 
+Achieved convergence tolerance: 5.914e-07</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with nonlinear regression curve</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>hp, mtcars<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">"Nonlinear Regression"</span>, <span class="at">xlab =</span> <span class="st">"Horsepower"</span>, <span class="at">ylab =</span> <span class="st">"Miles Per Gallon"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding nonlinear regression curve</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mtcars<span class="sc">$</span>hp, <span class="fu">predict</span>(nonlinear_model), <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="backup_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="real-world-applications" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-applications"><strong>Real-World Applications</strong></h2>
+<p>Linear regression finds applications in various fields:</p>
+<ul>
+<li><p><strong>Economics:</strong> Predicting economic indicators based on various factors.</p></li>
+<li><p><strong>Healthcare:</strong> Modeling the relationship between patient characteristics and health outcomes.</p></li>
+<li><p><strong>Finance:</strong> Predicting stock prices based on historical data.</p></li>
+</ul>
+<p>Nonlinear regression is applicable in scenarios where relationships are better represented by curves or other nonlinear patterns:</p>
+<ul>
+<li><p><strong>Pharmacokinetics:</strong> Modeling drug concentration over time in the body.</p></li>
+<li><p><strong>Biology:</strong> Modeling population growth, enzyme kinetics, etc.</p></li>
+<li><p><strong>Physics:</strong> Modeling complex physical phenomena.</p></li>
+</ul>
+</section>
+<section id="conclusion-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-2"><strong>Conclusion</strong></h2>
+<p>Understanding linear regression allows us to make predictions and gain insights into the relationships between variables. Nonlinear regression expands our modeling capabilities, allowing us to capture more intricate relationships in the data. In the upcoming sections, we’ll explore classification, and anomaly detection.</p>
+</section>
+</section>
+<section id="classification" class="level1">
+<h1><strong>Classification</strong></h1>
+<section id="introduction-3" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-3"><strong>Introduction</strong></h2>
+<p>Classification is a type of supervised machine learning where the goal is to predict the categorical class labels of new instances based on past observations. Classification involves training a model to learn the mapping between input features and predefined categories or classes. The trained model can then be used to predict the class labels of new, unseen instances. In this section, we’ll explore the basics of classification, with a focus on one of the most widely used algorithms: Decision Trees.</p>
+</section>
+<section id="decision-trees-for-classification" class="level2">
+<h2 class="anchored" data-anchor-id="decision-trees-for-classification"><strong>Decision Trees for Classification</strong></h2>
+<p>A decision tree is a tree-like model where each internal node represents a decision based on a feature, each branch represents the outcome of the decision, and each leaf node represents the class label.</p>
+<section id="how-it-works-1" class="level4">
+<h4 class="anchored" data-anchor-id="how-it-works-1"><strong>How it Works</strong></h4>
+<ol type="1">
+<li><p><strong>Feature Selection</strong>: Choose the feature that best splits the data into classes (based on criteria like Gini impurity or information gain).</p></li>
+<li><p><strong>Splitting:</strong> Create a branch for each possible value of the selected feature.</p></li>
+<li><p><strong>Repeat:</strong> Recursively apply steps 1 and 2 to each subset of data until a stopping criterion is met.</p></li>
+<li><p><strong>Leaf Nodes:</strong> Assign a class label to each leaf node.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision tree example using built-in dataset iris</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a decision tree model</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>tree_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> iris, <span class="at">method =</span> <span class="st">"class"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the decision tree plot</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree_model)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(tree_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="backup_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="real-world-application-2" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-application-2"><strong>Real-World Application</strong></h2>
+<p>Decision trees find applications in various domains:</p>
+<ul>
+<li><p><strong>Medical Diagnosis:</strong> Predicting diseases based on patient symptoms.</p></li>
+<li><p><strong>Customer Churn Prediction:</strong> Identifying customers likely to churn from a service.</p></li>
+<li><p><strong>Credit Scoring:</strong> Assessing credit risk of loan applicants.</p></li>
+</ul>
+</section>
+<section id="conclusion-3" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-3"><strong>Conclusion</strong></h2>
+<p>Classification is a powerful tool for making predictions and categorizing data into distinct classes. In the last sections, we’ll explore anomaly detection, a technique used to identify unusual patterns in data.</p>
+</section>
+</section>
+<section id="anomaly-detection" class="level1">
+<h1><strong>Anomaly Detection</strong></h1>
+<section id="introduction-4" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-4">Introduction</h2>
+<p>Anomaly detection, also known as outlier detection, is a machine learning technique used to identify patterns in data that deviate significantly from the norm. In this section, we’ll explore the basics of anomaly detection, with a focus on a common method: Z-score-based outlier detection.</p>
+</section>
+<section id="outlier-detection-methods" class="level2">
+<h2 class="anchored" data-anchor-id="outlier-detection-methods"><strong>Outlier Detection Methods</strong></h2>
+<p><strong>Z-Score Method</strong></p>
+<ul>
+<li><p>Calculates the Z-score for each data point, representing how many standard deviations it is from the mean.</p></li>
+<li><p>Points with a Z-score above a certain threshold are considered outliers.</p></li>
+</ul>
+<p><strong>Example:</strong> Outlier Detection using Z-Score</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Outlier detection using Z-score</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">31</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Z-scores</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>z_scores <span class="ot">&lt;-</span> (data <span class="sc">-</span> <span class="fu">mean</span>(data)) <span class="sc">/</span> <span class="fu">sd</span>(data)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Z-score threshold for outliers</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>z_threshold <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify outliers</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> <span class="fu">abs</span>(z_scores) <span class="sc">&gt;</span> z_threshold</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display identified outliers</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Outliers:"</span>, data[outliers], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Outliers:  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with highlighted outliers</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data), data, <span class="at">pch =</span> <span class="fu">ifelse</span>(outliers, <span class="dv">19</span>, <span class="dv">1</span>), <span class="at">main =</span> <span class="st">"Scatter Plot with Outliers"</span>, <span class="at">xlab =</span> <span class="st">"Index"</span>, <span class="at">ylab =</span> <span class="st">"Values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="backup_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="real-world-application-3" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-application-3"><strong>Real-World Application</strong></h2>
+<p>Anomaly detection is applied in various fields:</p>
+<ul>
+<li><p><strong>Fraud Detection:</strong> Identifying unusual patterns in financial transactions.</p></li>
+<li><p><strong>Network Security:</strong> Detecting unusual behavior in network traffic.</p></li>
+<li><p><strong>Manufacturing Quality Control:</strong> Identifying defective products.</p></li>
+</ul>
+</section>
+<section id="conclusion-4" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-4"><strong>Conclusion</strong></h2>
+<p>Anomaly detection is crucial for identifying unusual patterns that may indicate errors or potential issues.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div id="quarto-copyright" class="quarto-appendix-contents"><div>Esther Oyedele, 2023. All Rights Reserved</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

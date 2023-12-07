@@ -1,5 +1,8 @@
 ---
 title: "K-Means Clustering Algorithm"
+format: 
+  html:
+    code-fold: true
 ---
 
 K-Means is a partitioning method that divides a dataset into $k$ distinct, non-overlapping subsets (clusters).

@@ -11,7 +11,7 @@ website:
       - icon: github
         menu:
           - text: Source Code
-            url:  https://github.com/EstherOyedele
+            url:  https://github.com/EstherOyedele/MachineLearningProject
           - text: Report a Bug
             url:  https://github.com/EstherOyedele
     background: secondary

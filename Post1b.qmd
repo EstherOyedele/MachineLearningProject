@@ -69,7 +69,7 @@ cat("Probability of Event A (Rolling an even number):", probability_A, "\n")
 
 ```
 
-** The result of a coin flip using a Bernoulli distribution in R, you can create a bar plot that represents the probability of getting Heads and Tails. The bar heights will correspond to the probabilities of success (Heads) and failure (Tails). 
+The result of a coin flip using a Bernoulli distribution in R, you can create a bar plot that represents the probability of getting Heads and Tails. The bar heights will correspond to the probabilities of success (Heads) and failure (Tails). 
 ```{r}
 # Set the probability of getting Heads
 p_heads <- 0.5

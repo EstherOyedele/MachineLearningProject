@@ -38,6 +38,12 @@ pmf <- data.frame(Outcome = outcomes, Probability = probabilities)
 # Display the pmf
 print(pmf)
 ```
+To visualize this discrete distribution, let's create a bar plot
+```{r}
+barplot(probabilities, names.arg = outcomes, col = "lightblue",
+        main = "Probability Mass Function for a Six-Sided Die",
+        xlab = "Outcome", ylab = "Probability")
+```
 
 **Probability Density Function (PDF)**
 
@@ -52,6 +58,18 @@ pdf <- data.frame(X = x, Probability = dnorm(x))
 
 # Display the pdf
 print(pdf)
+
+```
+We  can visualize the PDF using a line plot as shown below
+
+```{r}
+# Plot the PDF
+plot(pdf$X, pdf$Probability, type = "l", col = "blue",
+     main = "Probability Density Function for Standard Normal Distribution",
+     xlab = "X", ylab = "Probability Density")
+
+# Add a vertical line at x = 0 for the mean
+abline(v = 0, col = "red", lty = 2)
 
 ```
 
